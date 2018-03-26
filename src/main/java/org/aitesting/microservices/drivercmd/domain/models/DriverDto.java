@@ -1,28 +1,68 @@
 package org.aitesting.microservices.drivercmd.domain.models;
 
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.NotNull;
-
 public class DriverDto {
+
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private String firstName;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private String lastName;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private String address;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private String email;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private String phone;
     @NotNull
     @NotEmpty
     @NotBlank
     private String license;
-    @NotNull
-    @NotEmpty
-    @NotBlank
-    private boolean available;
 
     public DriverDto() {}
 
-    public DriverDto(String license, boolean available) {
+    public DriverDto(String firstName, String lastName, String address, String email, String phone, String license) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
         this.license = license;
-        this.available = available;
     }
 
-    public String getLicense() { return license; }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public boolean isAvailable() { return available; }
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getLicense() {
+        return license;
+    }
 }
