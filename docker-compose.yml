@@ -1,0 +1,40 @@
+version: '3'
+services:
+
+  mongo:
+    image: 'mongo:3.4.1'
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo:/data/db'
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  driver-query:
+    build: ../driver-query/
+    container_name: 'driver-query'
+    environment:
+      - RABBIT_HOST=rabbitmq
+      - MONGO_HOST=mongo
+    ports:
+      - "8080"
+    depends_on:
+      - rabbitmq
+      - mongo
+  driver-cmd:
+    build: ./
+    container_name: 'driver-cmd'
+    environment:
+      - RABBIT_HOST=rabbitmq
+      - MONGO_HOST=mongo
+    ports:
+      - '8080'
+    depends_on:
+      - rabbitmq
+      - mongo
+      - driver-query
+
+volumes:
+  mongo:

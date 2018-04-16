@@ -1,0 +1,53 @@
+# Mongo config
+spring:
+  data:
+    mongodb:
+      database: driver-cmd
+      host: ${MONGO_HOST:localhost}
+      port: ${MONGO_PORT:27017}
+  application:
+    name: trip-management-cmd
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+
+server:
+  port: ${APP_PORT:8080}
+
+axon:
+  cluster-name: ${spring.application.name}
+  eventstore:
+    mongo:
+      connections:
+        default:
+          uri: ${mongodb://${MONGO_HOST:localhost}:${MONGO_PORT:27017}/trip-management-cmd
+          aggregates:
+            - Trip
+
+amqp:
+  events:
+    host: ${RABBIT_HOST:localhost}
+    exchange-name: eventBus
+    queue-name: eventQueue
+    handlers:
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: DEBUG
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+      hibernate: DEBUG
+      apache:
+        commons:
+          dbcp2: DEBUG
+
+---
+spring:
+  profiles: test
+
+eureka:
+  client:
+    enabled: false
