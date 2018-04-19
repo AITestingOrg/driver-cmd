@@ -31,6 +31,8 @@ public class DriverDto {
     @NotBlank
     private String license;
 
+    private boolean available;
+
     public DriverDto() {}
 
     public DriverDto(String firstName, String lastName, String address, String email, String phone, String license) {
@@ -64,5 +66,9 @@ public class DriverDto {
 
     public String getLicense() {
         return license;
+    }
+
+    public boolean isAvailable() {
+        return available;
     }
 }
