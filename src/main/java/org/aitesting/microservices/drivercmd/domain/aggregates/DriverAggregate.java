@@ -119,7 +119,7 @@ public class DriverAggregate {
 
     @EventSourcingHandler
     public void on(DriverCreatedEvent driverCreatedEvent) {
-        logger.trace(String.format("Sourcing DriverCreated %s", driverCreatedEvent.getId()));
+        logger.trace(String.format("Sourcing DriverCreatedEvent %s", driverCreatedEvent.getId()));
         this.id = driverCreatedEvent.getId();
         this.firstName = driverCreatedEvent.getFirstName();
         this.lastName = driverCreatedEvent.getLastName();
@@ -131,13 +131,13 @@ public class DriverAggregate {
 
     @EventSourcingHandler
     public void on(DriverDeletedEvent driverDeletedEvent) {
-        logger.trace(String.format("Sourcing DriverDeleted %s", driverDeletedEvent.getId()));
+        logger.trace(String.format("Sourcing DriverDeletedEvent %s", driverDeletedEvent.getId()));
         this.id = driverDeletedEvent.getId();
     }
 
     @EventSourcingHandler
     public void on(DriverAvailabilityChangedEvent driverAvailabilityChangedEvent) {
-        logger.trace(String.format("Sourcing DriverAvailabilityChanged %s",
+        logger.trace(String.format("Sourcing DriverAvailabilityChangedEvent %s",
                 driverAvailabilityChangedEvent.getId()));
         this.id = driverAvailabilityChangedEvent.getId();
         this.available = driverAvailabilityChangedEvent.isAvailable();
