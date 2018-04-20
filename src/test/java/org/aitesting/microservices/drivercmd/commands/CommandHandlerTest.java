@@ -1,5 +1,8 @@
 package org.aitesting.microservices.drivercmd.commands;
 
+import static org.aitesting.microservices.drivercmd.configuration.TestConstants.*;
+
+import java.util.UUID;
 import org.aitesting.microservices.driver.common.events.DriverAvailabilityChangedEvent;
 import org.aitesting.microservices.driver.common.events.DriverCreatedEvent;
 import org.aitesting.microservices.driver.common.events.DriverDeletedEvent;
@@ -16,10 +19,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.UUID;
-
-import static org.aitesting.microservices.drivercmd.configuration.TestConstants.*;
 
 @RunWith(SpringRunner.class)
 @Profile("test")

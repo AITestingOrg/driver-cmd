@@ -1,10 +1,10 @@
 package org.aitesting.microservices.drivercmd.models;
 
+import static org.aitesting.microservices.drivercmd.configuration.TestConstants.*;
+
 import org.aitesting.microservices.drivercmd.domain.models.DriverDto;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.aitesting.microservices.drivercmd.configuration.TestConstants.*;
 
 public class DriverDtoTest {
 
