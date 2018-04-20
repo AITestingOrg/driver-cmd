@@ -2,7 +2,7 @@ package org.aitesting.microservices.drivercmd.service.configuration;
 
 import org.aist.libs.eventsourcing.configuration.configurations.AmqpEventPublisherConfiguration;
 import org.aitesting.microservices.drivercmd.domain.DriverCommandHandler;
-import org.aitesting.microservices.drivercmd.domain.aggregates.Driver;
+import org.aitesting.microservices.drivercmd.domain.aggregates.DriverAggregate;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.eventsourcing.EventSourcingRepository;
 import org.springframework.context.annotation.Bean;
@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class DriverEventStoreConfiguration
-        extends AmqpEventPublisherConfiguration<Driver, DriverCommandHandler> {
+        extends AmqpEventPublisherConfiguration<DriverAggregate, DriverCommandHandler> {
     public DriverEventStoreConfiguration() {
-        super(Driver.class);
+        super(DriverAggregate.class);
     }
 
     @Override
