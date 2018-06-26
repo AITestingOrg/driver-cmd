@@ -36,5 +36,10 @@ services:
       - mongo
       - driver-query
 
+  discovery-service:
+    image: aista/eureka
+    ports:
+      - "8761:8761"
+
 volumes:
   mongo:

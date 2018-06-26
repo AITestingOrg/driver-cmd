@@ -23,5 +23,11 @@ services:
     depends_on:
       - rabbitmq
       - mongo
+
+  discovery-service:
+    image: aista/eureka
+    ports:
+      - "8761:8761"
+
 volumes:
   mongo:
