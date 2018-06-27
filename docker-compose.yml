@@ -36,7 +36,7 @@ services:
       - mongo
       - driver-query
 
-  discovery-service:
+  discoveryservice:
     image: aista/eureka
     ports:
       - "8761:8761"
