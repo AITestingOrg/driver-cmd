@@ -6,7 +6,7 @@ spring:
       host: ${MONGO_HOST:localhost}
       port: ${MONGO_PORT:27017}
   application:
-    name: trip-management-cmd
+    name: driver-cmd
   rabbitmq:
     host: ${RABBIT_HOST:localhost}
 
@@ -19,7 +19,7 @@ axon:
     mongo:
       connections:
         default:
-          uri: ${mongodb://${MONGO_HOST:localhost}:${MONGO_PORT:27017}/trip-management-cmd
+          uri: ${mongodb://${MONGO_HOST:localhost}:${MONGO_PORT:27017}/driver-cmd
           aggregates:
             - Trip
 
@@ -44,10 +44,11 @@ logging:
         commons:
           dbcp2: DEBUG
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discoveryservice:8761/eureka
+
 ---
 spring:
   profiles: test
-
-eureka:
-  client:
-    enabled: false
