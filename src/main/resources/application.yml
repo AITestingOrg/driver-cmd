@@ -26,9 +26,9 @@ axon:
 amqp:
   events:
     host: ${RABBIT_HOST:localhost}
-    exchange-name: eventBus
-    queue-name: eventQueue
-    handlers:
+    exchange-name: eventBusDriver
+    queue-name: eventQueueDriver
+    handlers: org.aitesting.microservices.driver.cmd.domain.eventhandlers
 
 logging:
   level:
