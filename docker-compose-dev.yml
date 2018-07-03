@@ -13,7 +13,7 @@ services:
       - "5672:5672"
       - "15672:15672"
   driver-query:
-    image: ../driver-query/
+    build: ../driver-query/
     container_name: 'driver-query'
     environment:
       - RABBIT_HOST=rabbitmq
@@ -23,5 +23,25 @@ services:
     depends_on:
       - rabbitmq
       - mongo
+      - discoveryservice
+
+  driver-cmd:
+    build: ./
+    container_name: 'driver-cmd'
+    environment:
+      - RABBIT_HOST=rabbitmq
+      - MONGO_HOST=mongo
+    ports:
+      - "8080"
+    depends_on:
+      - rabbitmq
+      - mongo
+      - discoveryservice
+
+  discoveryservice:
+    image: aista/eureka
+    ports:
+      - "8761:8761"
+
 volumes:
   mongo:
