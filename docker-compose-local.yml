@@ -7,13 +7,15 @@ services:
       - '27017:27017'
     volumes:
       - 'mongo:/data/db'
+
   rabbitmq:
     image: rabbitmq:management
     ports:
       - "5672:5672"
       - "15672:15672"
+
   driver-query:
-    build: ../driver-query/
+    image: aista/driver-query
     container_name: 'driver-query'
     environment:
       - RABBIT_HOST=rabbitmq

@@ -28,7 +28,7 @@ services:
       - discoveryservice
 
   driver-cmd:
-    build: ./
+    image: aista/driver-cmd
     container_name: 'driver-cmd'
     environment:
       - RABBIT_HOST=rabbitmq
